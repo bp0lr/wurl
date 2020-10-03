@@ -32,33 +32,35 @@ exit status 2
 ```
 
 
-## examples
+## usage examples
 ```
-
-### basic usage
  ▶ cat urls.txt | wurl -c 50
 -> get each link and return just working ones. (status code 200).
-
+```
+```
  ▶ cat urls.txt | wurl -c 50 -f
 -> get each link following redirection and return working ones. (status code 200 / 302).
-
+```
+```
 ▶ cat urls.txt | wurl -c 50 -H ""Cookie: mycookie" -s "200, 500, 302"
 -> get each link using my cookie and return status codes [200, 500, 302]
-
+```
+```
 ▶ cat urls.txt | wurl -c 50 -H ""Cookie: mycookie" -s "200, 500, 302" -p "http://192.168.0.150:8080"
 -> get each link using my cookie and a proxy server (burp for example) and return status codes [200, 500, 302]
-
+```
+```
 ▶ cat urls.txt | wurl -c 50 -H ""Cookie: mycookie" -s "200, 500, 302" -p "http://192.168.0.150:8080" -f "paypal"
 -> get each link using my cookie and a proxy server (burp for example).
 return status codes [200, 500, 302] and results containing the word "paypal" in his body.
-
+```
+```
 ▶ cat urls.txt | wurl -c 50 -H ""Cookie: mycookie" -s "200, 500, 302" -p "http://192.168.0.150:8080" -f "paypal" --random-agent
 -> get each link using my cookie, a random-agent for each query and a proxy server (burp for example).
 return status codes [200, 500, 302] and results containing the word "paypal" in his body.
-
+```
+```
 ▶ cat urls.txt | wurl -c 50  -s "200" --random-agent -test
 -> send a HTTP and HTTPS query for each link using a random-agent and return just working ones.
 return status codes [200].
-
 ```
-
