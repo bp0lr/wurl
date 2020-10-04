@@ -11,16 +11,19 @@ Wurl has multiple options to make your life easier.
  ▶ wurl -h 
 
 Usage of wurl:
-  -c, --concurrency int       Concurrency level (default 20)
-  -m, --finger-print string   regex for a specific string on response
+  -c, --concurrency int       Concurrency level (default 50)
+  -m, --finger-print string   Regex for a specific string on response
   -f, --follow-redirect       Follow redirects (Default: false)
   -H, --header stringArray    Add custom Headers to the request
   -o, --output string         Output file to save the results to
   -p, --proxy string          Add a HTTP proxy
-  -u, --random-agent          Set a random User Agent
+  -q, --query string          replace the query for each url
+  -r, --random-agent          Set a random User Agent
   -s, --status-code string    List valid status codes (default 200)
   -t, --test                  Test http && https for a single url
+  -u, --url string            The url to check
   -v, --verbose               Display extra info about what is going on
+  
 pflag: help requested
 exit status 2
 
@@ -64,3 +67,16 @@ return status codes [200, 500, 302] and results containing the word "paypal" in 
 -> send a HTTP and HTTPS query for each link using a random-agent and return just working ones.
 return status codes [200].
 ```
+
+## search examples
+
+```
+▶ cat urls.txt | wurl -c 50  -s "200" --random-agent -test -q "index.php"
+-> send a HTTP and HTTPS query for each link using a random-agent and replacing the query for "index.php" and return just working ones.
+return status codes [200].
+```
+
+▶ wurl -u "https://www.something.com?param=1&param=2&param=3" -c 50  -s "200" --random-agent -test -q "index.php"
+-> send a HTTP and HTTPS query for each link using a random-agent and replacing the query for "index.php" and return just working ones.
+return status codes [200].
+
