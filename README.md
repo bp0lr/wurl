@@ -75,8 +75,8 @@ return status codes [200].
 -> send a HTTP and HTTPS query for each link using a random-agent and replacing the query for "index.php" and return just working ones.
 return status codes [200].
 ```
-
+```
 ▶ wurl -u "https://www.something.com?param=1&param=2&param=3" -c 50  -s "200" --random-agent -test -q "index.php"
 -> send a HTTP and HTTPS query for each link using a random-agent and replacing the query for "index.php" and return just working ones.
 return status codes [200].
-
+```
