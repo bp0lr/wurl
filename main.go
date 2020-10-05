@@ -27,12 +27,12 @@ import (
 var (
 	concurrencyArg    int
 	HeaderArg         []string
-	urlArg		      string
+	urlArg            string
 	statusListArg     string
 	proxyArg          string
 	fingerPrintArg    string
 	outputFileArg     string
-	queryArg      	  string
+	queryArg          string
 	verboseArg        bool
 	followRedirectArg bool
 	useRandomAgentArg bool
@@ -90,7 +90,7 @@ func main() {
 		go func() {
 			for raw := range jobs {
 
-				if(len(queryArg) > 0){
+				if len(queryArg) > 0 {
 					tmp_u, _ := url.Parse(raw)
 					raw = tmp_u.Scheme + "://" + tmp_u.Host + "/" + queryArg
 				}
@@ -122,15 +122,15 @@ func main() {
 		}()
 	}
 
-	if(len(urlArg) < 1){
+	if len(urlArg) < 1 {
 		sc := bufio.NewScanner(os.Stdin)
 		for sc.Scan() {
 			jobs <- sc.Text()
 		}
-	}else{
-			jobs <- urlArg
+	} else {
+		jobs <- urlArg
 	}
-		
+
 	close(jobs)
 	wg.Wait()
 }
